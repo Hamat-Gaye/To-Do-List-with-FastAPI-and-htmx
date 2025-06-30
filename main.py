@@ -7,7 +7,7 @@ from fastapi.encoders import jsonable_encoder
 
 #Other Imports
 from uuid import uuid4
-from typing import Annotated, Union
+from typing import Annotated
 
 # Initialize FastAPI
 app = FastAPI()
@@ -20,7 +20,7 @@ async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/todos", response_class=HTMLResponse)
-async def list_todos(request: Request, hx_request: Annotated[Union[str, None], Header()] = None):
+async def list_todos(request: Request, hx_request: Annotated[ str | None, Header()] = None):
     if hx_request:
         return templates.TemplateResponse(
             request=request, name="todos.html", context={"todos":todos}
@@ -54,7 +54,7 @@ async def toggle_todo(request: Request, todo_id: str):
         request=request, name="todos.html", context={"todos": todos}
     )
 
-@app.post("/todos/{todo_id}/delete", response_class=HTMLResponse)
+@  app.post("/todos/{todo_id}/delete", response_class=HTMLResponse)
 async def delete_todo(request: Request, todo_id: str):
     for index, todo in enumerate(todos):
         if str(todo.id) == todo_id:
