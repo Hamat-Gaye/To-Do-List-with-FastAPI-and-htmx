@@ -11,7 +11,7 @@
     <p>Fullstack App using HTMX and FastAPI</p>
     <form hx-post="/todos" hx-target="#todos" hx-swap="innerHTML" hx-on:htmx:after-request="this.reset()">
         <input type="text" name="todo" placeholder="I want to ...">
-        <button>Add Todo</button>
+        <button>Add Task</button>
     </form>
     <ul id="todos" hx-get="/todos" hx-trigger="load" hx-swap="innerHTML">
 
