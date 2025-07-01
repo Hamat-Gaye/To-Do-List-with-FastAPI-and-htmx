@@ -65,6 +65,7 @@ async def delete_todo(request: Request, todo_id: str):
         request=request, name="todos.html", context={"todos": todos}
     )
 
+
 # Todo Model
 class TODO:
     def __init__(self, text:str):
@@ -72,8 +73,10 @@ class TODO:
         self.text = text
         self.done = False
 
+
 # In-memory storage for todos
 todos = []
+
 
 # Start the dev server (CLI use)
 if __name__ == "__main__":
